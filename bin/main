@@ -1,44 +1,22 @@
 #!/usr/bin/env ruby
+load 'bin/game.rb'
 
-puts 'Welcome to tic-tac-toe game'
-puts
-puts ' 1 | 2 | 3 '
-puts '---+---+---'
-puts ' 4 | 5 | 6 '
-puts '---+---+---'
-puts ' 7 | 8 | 9 '
-puts
+Board.start
+
 puts 'Player one name >>'
-player_one = gets.chomp
-puts "Player #{player_one} plays with X\'s"
+player_one = Players.new(gets.chomp.capitalize)
+puts "Player #{player_one.name} plays with X\'s"
 puts
 puts 'Player two name >>'
-player_two = gets.chomp
-puts "Player #{player_two} plays with O\'s"
+player_two = Players.new(gets.chomp.capitalize)
+puts "Player #{player_two.name} plays with O\'s"
 puts
-puts "#{player_one} choose your move >>"
-player_one_move = gets.chomp
-puts ' 1 | 2 | 3 '
-puts '---+---+---'
-puts ' 4 | 5 | 6 '
-puts '---+---+---'
-puts ' 7 | 8 | 9 '
-puts "#{player_one} chose #{player_one_move} position"
+puts "#{player_one.name} choose your move >>"
+player_one.current_move(gets.chomp)
+Board.display
+puts "#{player_one.name} chose #{player_one.move} position"
 puts
-# show game board with player one move
-puts "#{player_two} choose your move >>"
-player_two_move = gets.chomp
-puts ' 1 | 2 | 3 '
-puts '---+---+---'
-puts ' 4 | 5 | 6 '
-puts '---+---+---'
-puts ' 7 | 8 | 9 '
-puts "#{player_two} chose #{player_two_move} position"
-puts
-# show game board with player two move
-winning_player = player_one
-lossing_player = player_two
-# Win
-puts "Congratutalions #{winning_player}"
-# Lose
-puts "Better luck for the next time #{lossing_player}"
+puts "#{player_two.name} choose your move >>"
+player_two.current_move(gets.chomp)
+Board.display
+puts "#{player_two.name} chose #{player_two.move} position"
