@@ -1,4 +1,4 @@
-possible_combinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+poss_comb = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
 
 class Game
   attr_reader :name, :move
@@ -28,6 +28,18 @@ class Game
     end
     @@player_one = !@@player_one
   end
+
+  def win
+    count = 0
+    poss_comb.each do |arr|
+      arr.each do |num|
+        count += 1 if @moves.includes?(num)
+      end
+      break if count = 3
+    end
+    if count = 3
+      puts "You Win!"
+  end
 end
 
 class Board < Game
@@ -55,3 +67,4 @@ end
 
 class Players < Game
 end
+
