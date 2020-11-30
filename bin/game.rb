@@ -1,5 +1,3 @@
-poss_comb = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
-
 class Game
   attr_reader :name, :move
 
@@ -7,6 +5,11 @@ class Game
     @name = name
     @moves = []
   end
+
+  @@poss_comb = [%w[1 2 3], %w[4 5 6], %w[7 8 9], %w[1 4 7],
+                %w[2 5 8], %w[3 6 9], %w[1 5 9], %w[3 5 7]]
+
+  @@count = 0
 
   @@pos = %w[1 2 3 4 5 6 7 8 9]
 
@@ -29,16 +32,33 @@ class Game
     @@player_one = !@@player_one
   end
 
+  def turn
+    puts "#{name} choose your move >>"
+    current_move(gets.chomp)
+    Board.display
+    puts "#{name} choose position #{move}"
+    puts
+    win
+  end
+
   def win
-    count = 0
-    poss_comb.each do |arr|
+    @@poss_comb.each do |arr|
       arr.each do |num|
-        count += 1 if @moves.includes?(num)
+        @@count += 1 if @moves.include?(num)
       end
-      break if count = 3
+      break if @@count == 3
+
+      @@count = 0 if @@count < 3
     end
-    if count = 3
-      puts "You Win!"
+    puts @@count
+    puts "You Win! #{name}" if @@count == 3
+  end
+
+  def self.begin(one, two)
+    while @@count < 3
+      one.turn if @@count < 3
+      two.turn if @@count < 3
+    end
   end
 end
 
@@ -67,4 +87,3 @@ end
 
 class Players < Game
 end
-

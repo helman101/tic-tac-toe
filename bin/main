@@ -11,12 +11,4 @@ puts 'Player two name >>'
 player_two = Players.new(gets.chomp.capitalize)
 puts "Player #{player_two.name} plays with O\'s"
 puts
-puts "#{player_one.name} choose your move >>"
-player_one.current_move(gets.chomp)
-Board.display
-puts "#{player_one.name} chose #{player_one.move} position"
-puts
-puts "#{player_two.name} choose your move >>"
-player_two.current_move(gets.chomp)
-Board.display
-puts "#{player_two.name} chose #{player_two.move} position"
+Game.begin(player_one, player_two)
