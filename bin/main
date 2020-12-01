@@ -1,14 +1,5 @@
 #!/usr/bin/env ruby
-load 'bin/game.rb'
+load 'lib/game.rb'
 
-Board.start
-
-puts 'Player one name >>'
-player_one = Players.new(gets.chomp.capitalize)
-puts "Player #{player_one.name} plays with X\'s"
-puts
-puts 'Player two name >>'
-player_two = Players.new(gets.chomp.capitalize)
-puts "Player #{player_two.name} plays with O\'s"
-puts
-Game.begin(player_one, player_two)
+game = Game.new
+game.start
