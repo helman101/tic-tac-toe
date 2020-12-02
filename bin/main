@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 load 'lib/game.rb'
+
+public
+
 def welcome
   puts 'Welcome to tic-tac-toe game'
   puts
