@@ -37,7 +37,7 @@ class Game
   end
 
   def curr_player
-    @first ? @player_one : @player_two
+    @first ? player_one : player_two
   end
 
   def curr_move(num)
