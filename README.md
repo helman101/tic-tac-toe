@@ -1,8 +1,6 @@
 
 # Tic-Tac-Toe
 
-
-
 ## About the Project
 
 This project is a tic-tac-toe game. The main goal is to practice object oriented programming(OOP).
@@ -74,6 +72,11 @@ This project is [MIT](./LICENSE) licensed.
 - GitHub: [@github](https://github.com/warblo001)
 - Twitter: [@twitter](https://twitter.com/Alan55572391)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/alan-solis-b567b044/)
+
+👤 **Helman Ortegon**
+
+- GitHub: [@helman101](https://github.com/helman101)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/helman101/)
 
 ## Acknowledgments
 
