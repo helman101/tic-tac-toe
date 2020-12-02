@@ -1,5 +1,61 @@
 #!/usr/bin/env ruby
-load 'lib/game.rb'
+load 'game.rb'
+def welcome
+  puts 'Welcome to tic-tac-toe game'
+  puts
+  display_board
+end
 
-game = Game.new
+def display_board
+  puts
+  puts " #{@pos[0]} | #{@pos[1]} | #{@pos[2]} "
+  puts '---+---+---'
+  puts " #{@pos[3]} | #{@pos[4]} | #{@pos[5]} "
+  puts '---+---+---'
+  puts " #{@pos[6]} | #{@pos[7]} | #{@pos[8]} "
+  puts
+end
+
+def set_player
+  @first = !@first
+  puts "Player #{@first ? 'one' : 'two'} name>>"
+  my_player = Players.new(good_name(gets.chomp.capitalize))
+  puts "Player #{my_player.name} plays with #{@first ? 'X' : 'O'} "
+  puts
+  my_player
+end
+
+def good_name(name)
+  if name =~ /[a-zA-Z]/ && !name.length.zero? && name =~ /\S/
+    name
+  else
+    puts 'Please use letters only'
+    good_name(gets.chomp)
+  end
+end
+
+def turn
+  @player = curr_player
+  puts "#{@player.name} choose your move >>"
+  curr_move(good_move(gets.chomp))
+  @board.display_board
+  puts "#{@first ? 'Player one' : 'Player two'} #{@player.name} choose position #{@player.move}"
+  puts
+  win
+  @first = !@first
+end
+
+def good_move(move)
+  if !@taken_moves.include?(move) && move =~ /[1-9]/ && move.length == 1
+    move
+  else
+    puts 'Please select a valid position'
+    good_move(gets.chomp)
+  end
+end
+
+game = Game.new(set_player, set_player)
 game.start
+game.match
+puts "You Win!! #{game.player.name}" if game.win?
+puts 'It\'s a Tie!!' if game.tie? && !game.win?
