@@ -6,17 +6,27 @@ public
 def welcome
   puts 'Welcome to tic-tac-toe game'
   puts
-  display_board
+  puts
+  puts ' 1 | 2 | 3 '
+  puts '---+---+---'
+  puts ' 4 | 5 | 6 '
+  puts '---+---+---'
+  puts ' 7 | 8 | 9 '
+  puts
 end
 
 def display_board
   puts
-  puts " #{@pos[0]} | #{@pos[1]} | #{@pos[2]} "
+  puts " #{empty_space(0)} | #{empty_space(1)} | #{empty_space(2)} "
   puts '---+---+---'
-  puts " #{@pos[3]} | #{@pos[4]} | #{@pos[5]} "
+  puts " #{empty_space(3)} | #{empty_space(4)} | #{empty_space(5)} "
   puts '---+---+---'
-  puts " #{@pos[6]} | #{@pos[7]} | #{@pos[8]} "
+  puts " #{empty_space(6)} | #{empty_space(7)} | #{empty_space(8)} "
   puts
+end
+
+def empty_space(index)
+  @pos[index] =~ /[1-9]/ ? ' ' : @pos[index]
 end
 
 def set_player
